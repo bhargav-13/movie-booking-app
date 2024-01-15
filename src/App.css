@@ -26,3 +26,28 @@ h1 {
   border-radius: 8px;
   background-color: #fff;
 }
+
+.seat-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 520px;
+  margin: 0 auto;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.seat.selected {
+  background-color: #007bff;
+  color: #fff;
+}

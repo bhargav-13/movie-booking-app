@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import Movie from './components/Movie';
 import MovieForm from './components/MovieForm';
+import SeatSelection from './components/SeatSelection';
 import './App.css';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   useEffect(() => {
     // Fetch movies from your Django API when the component mounts
@@ -32,10 +34,19 @@ const App = () => {
       .catch(error => console.error('Error adding movie:', error));
   };
 
+  const handleSeatSelect = (seats) => {
+    setSelectedSeats(seats);
+  };
+
   return (
     <div className="container">
       <h1>Movies</h1>
       <MovieForm onAddMovie={handleAddMovie} />
+      <SeatSelection onSeatSelect={handleSeatSelect} />
+      <div>
+        <h2>Selected Seats</h2>
+        <p>{selectedSeats.join(', ')}</p>
+      </div>
       {movies.map(movie => (
         <div key={movie.title} className="movie">
           <Movie
@@ -51,3 +62,4 @@ const App = () => {
 };
 
 export default App;
+
